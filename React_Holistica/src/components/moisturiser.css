@@ -1,0 +1,356 @@
+/* ================== Moisturiser Page ================== */
+.moisturiser-page {
+  /* ------------------ Section ------------------ */
+}
+
+.moisturiser-page .moisturizers {
+  padding: 3rem 2rem;
+  background: white;
+  text-align: center;
+}
+
+.moisturiser-page .moisturizers h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  margin-top: -1.5rem;
+}
+
+.moisturiser-page .moisturizers p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+}
+
+/* ------------------ Filter Buttons ------------------ */
+.moisturiser-page .filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+
+.moisturiser-page .filter-btn {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.moisturiser-page .filter-btn:hover {
+  background: #f7f5f2;
+  border-color: #bbb;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.moisturiser-page .filter-btn.active {
+  background: #D4CFC4;
+  color: #3A3A3A;
+  border-color: #D4CFC4;
+  box-shadow: 0 4px 12px rgba(212, 207, 196, 0.4);
+}
+
+/* ------------------ Product Grid ------------------ */
+.moisturiser-page .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+  justify-items: center;
+}
+
+/* ------------------ Product Card ------------------ */
+.moisturiser-page .product-card {
+  background: #fff;
+  border-radius: 0;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.moisturiser-page .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* ------------------ Image Wrapper ------------------ */
+.moisturiser-page .product-image-wrapper {
+  position: relative; /* Needed for absolute heart button */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: none;
+  border: none;
+  margin-bottom: 0.8rem;
+}
+
+.moisturiser-page .product-image-wrapper img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+/* ------------------ Wishlist Heart on Image ------------------ */
+.moisturiser-page .add-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.moisturiser-page .add-wishlist:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ------------------ Add to Cart Button ------------------ */
+.moisturiser-page .add-cart {
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0;
+  background: #D4CFC4;
+  color: #3A3A3A;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+}
+
+.moisturiser-page .add-cart:hover {
+  background: #C0B8AC;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* ------------------ Product Title ------------------ */
+.moisturiser-page .product-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 0.8rem;
+  line-height: 1.3;
+  height: 3.6em;
+  overflow: hidden;
+}
+
+/* ------------------ Hero Section ------------------ */
+.moisturiser-page .hero-moisturizers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #F5F2EB;
+  padding: 4rem 3rem;
+  align-items: center;
+  gap: 3rem;
+  border-radius: 0;
+  overflow: hidden;
+  margin-top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.moisturiser-page .hero-text {
+  text-align: center;
+}
+
+.moisturiser-page .hero-text h4 {
+  font-size: 0.95rem;
+  color: black;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.moisturiser-page .hero-text h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #2b2b2b;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.moisturiser-page .hero-text p {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 450px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.6;
+}
+
+.moisturiser-page .hero-image {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  margin-top: 4rem;
+}
+
+.moisturiser-page .hero-image img {
+  width: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  display: block;
+  height: 100%;
+}
+
+.moisturiser-page .hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  border-radius: 0;
+}
+
+.moisturiser-page .overlay-text {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ------------------ Footer ------------------ */
+.moisturiser-page footer {
+  background-color: #C0B8AC;
+  color: #3A3A3A;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ------------------ Cart Popup ------------------ */
+.moisturiser-page .cart-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.moisturiser-page .cart-popup-content {
+  background: #fff;
+  width: 400px;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.moisturiser-page .cart-popup-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.moisturiser-page .cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.moisturiser-page .cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.moisturiser-page .cart-item-title {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.moisturiser-page .close-cart-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 992px) {
+  .moisturiser-page .hero-moisturizers {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .moisturiser-page .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .moisturiser-page .hero-text p {
+    margin: 0 auto 1.5rem;
+  }
+
+  .moisturiser-page .overlay-text {
+    font-size: 0.95rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .moisturiser-page .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .moisturiser-page .product-image-wrapper img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .moisturiser-page .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .moisturiser-page .product-image-wrapper img {
+    height: 200px;
+  }
+}

@@ -92,13 +92,15 @@ export default function Skincare() {
       <section className="shop-concern">
         <h2>Shop by Category</h2>
         <div className="concern-cards-scroll">
-          <div className="concern-card">
-            <img
-              src="https://www.shutterstock.com/image-photo/cosmetic-smears-creamy-texture-on-600nw-2212932693.jpg"
-              alt="Moisturiser"
-            />
-            <div className="card-text">Moisturiser</div>
-          </div>
+           <div className="concern-card">
+    <Link to="/moisturiser" style={{ textDecoration: "none", color: "inherit" }}>
+      <img
+        src="https://www.shutterstock.com/image-photo/cosmetic-smears-creamy-texture-on-600nw-2212932693.jpg"
+        alt="Moisturiser"
+      />
+      <div className="card-text">Moisturiser</div>
+    </Link>
+  </div>
 
           <div className="concern-card">
             <img

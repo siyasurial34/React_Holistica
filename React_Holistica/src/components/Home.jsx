@@ -6,6 +6,7 @@ import heroVideo from "../assets/1.mp4";
 import { Link } from "react-router-dom";
 
 
+
 function Home() {
   const [isDark, setIsDark] = useState(false);
 
@@ -91,15 +92,15 @@ function Home() {
         <p>Find wellness solutions tailored to your specific needs.</p>
 
         <div className="concern-cards-scroll">
-          <div className="concern-card">
-            <a href="sleep_relax.html">
-              <img
-                src="https://plus.unsplash.com/premium_photo-1677849533990-ad83e1d7024e?w=600&auto=format&fit=crop&q=60"
-                alt="Sleep"
-              />
-              <div className="card-text">Sleep And Relaxation</div>
-            </a>
-          </div>
+           <div className="concern-card">
+    <Link to="/sleep_relax">
+      <img
+        src="https://plus.unsplash.com/premium_photo-1677849533990-ad83e1d7024e?w=600&auto=format&fit=crop&q=60"
+        alt="Sleep"
+      />
+      <div className="card-text">Sleep And Relaxation</div>
+    </Link>
+  </div>
 
           <div className="concern-card">
             <Link to="/skincare">
