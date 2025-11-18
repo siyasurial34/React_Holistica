@@ -50,6 +50,7 @@ function Home() {
           <a href="#">About</a>
           <a href="#">Wellness</a>
           <a href="#">Contact</a>
+          <Link to="/login">Login</Link>
         </nav>
 
         <div className="logo">Holistica</div>

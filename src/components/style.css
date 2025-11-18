@@ -953,3 +953,104 @@ body {
   transform: scale(1.05);
   box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
+/* Full page center */
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Box */
+.form-box {
+  width: 360px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Toggle buttons (Login / Signup) */
+.toggle-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.toggle-buttons button {
+  width: 48%;
+  padding: 12px 0;
+  border: none;
+  background: #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+.toggle-buttons button.active {
+  background: black;
+  color: white;
+}
+
+/* Forms */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Input styles */
+.form input {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: black;
+}
+
+/* Button */
+.btn {
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+/* Switch text */
+.switch-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.switch-text span {
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
