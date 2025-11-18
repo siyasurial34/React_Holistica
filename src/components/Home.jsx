@@ -53,6 +53,8 @@ function Home() {
           <Link to="/login">Login</Link>
         </nav>
 
+       
+
         <div className="logo">Holistica</div>
 
         <label className="theme-switch">

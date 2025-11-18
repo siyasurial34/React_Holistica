@@ -953,6 +953,7 @@ body {
   transform: scale(1.05);
   box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
+<<<<<<< HEAD
 /* Full page center */
 .container {
   width: 100vw;
@@ -1053,4 +1054,12 @@ body {
   font-weight: bold;
   color: black;
   cursor: pointer;
+=======
+.login-btn {
+  padding: 8px 16px;
+  background: black;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+>>>>>>> 7bb1716 (done)
 }
