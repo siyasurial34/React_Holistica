@@ -255,7 +255,7 @@
 
 /* ------------------ Cart Popup ------------------ */
 .moisturiser-page .cart-popup {
-  display: none;
+  /* remove display:none */
   position: fixed;
   top: 0;
   left: 0;
@@ -265,7 +265,9 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
+  display: flex; /* <-- make it flex to center popup */
 }
+
 
 .moisturiser-page .cart-popup-content {
   background: #fff;
@@ -353,4 +355,42 @@
   .moisturiser-page .product-image-wrapper img {
     height: 200px;
   }
+}
+
+.moisturiser-page .wishlist-container {
+  cursor: pointer;
+}
+
+.moisturiser-page .cart-container {
+  cursor: pointer; /* for the cart as well */
+}
+/* Wishlist Heart on Image */
+.moisturiser-page .add-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  color: #e74c3c; /* red for active */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.3s ease;
+}
+
+/* Empty heart color */
+.moisturiser-page .add-wishlist:not(.active) {
+  color: #aaa; /* grey outline for empty */
+}
+
+/* Hover effect */
+.moisturiser-page .add-wishlist:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }

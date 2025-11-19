@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./style.css";      // Global styles including navbar
-import "./moisturiser.css"; // Page-specific styles (except navbar)
-
+import "./style.css";
+import "./moisturiser.css";
 
 export default function Moisturiser() {
-  // Cart and Wishlist state
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [showCartPopup, setShowCartPopup] = useState(false);
+  const [showWishlistPopup, setShowWishlistPopup] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("all");
 
-  // Product data
   const products = [
     {
       title: "Neutrogena Hydro Boost Hyaluronic Acid Water Gel Light Face Moisturizer For Normal, Dry & Oily Skin",
@@ -29,19 +27,21 @@ export default function Moisturiser() {
       img: "https://images-static.nykaa.com/media/catalog/product/b/b/bbe1986DOTKE00000054_1a.jpg",
       category: "oily",
     },
-    // Add more products as needed
   ];
 
-  // Filter products by category and search query
   const filteredProducts = products.filter(
     (p) =>
       (filter === "all" || p.category === filter) &&
       p.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Functions to add items
   const addToCart = (product) => setCart([...cart, product]);
-  const addToWishlist = (product) => setWishlist([...wishlist, product]);
+
+  const addToWishlist = (product) => {
+    if (!wishlist.find((p) => p.title === product.title)) {
+      setWishlist([...wishlist, product]);
+    }
+  };
 
   return (
     <div className="moisturiser-page">
@@ -74,7 +74,7 @@ export default function Moisturiser() {
           </div>
 
           {/* Wishlist Counter */}
-          <div className="wishlist-container">
+          <div className="wishlist-container" onClick={() => setShowWishlistPopup(true)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 
                  4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 
@@ -141,9 +141,14 @@ export default function Moisturiser() {
                   <button className="add-cart" onClick={() => addToCart(product)}>
                     Add to Cart
                   </button>
-                  <button className="add-wishlist" onClick={() => addToWishlist(product)}>
-                    ♥
-                  </button>
+                <button
+  className={`add-wishlist ${wishlist.find(p => p.title === product.title) ? "active" : ""}`}
+  onClick={() => addToWishlist(product)}
+  title={wishlist.find(p => p.title === product.title) ? "In Wishlist" : "Add to Wishlist"}
+>
+  {wishlist.find(p => p.title === product.title) ? "♥" : "♡"}
+</button>
+
                 </div>
                 <h3 className="product-title">{product.title}</h3>
               </div>
@@ -151,6 +156,28 @@ export default function Moisturiser() {
           </div>
         </div>
       </section>
+
+      {/* Wishlist Popup */}
+      {showWishlistPopup && (
+        <div className="cart-popup">
+          <div className="cart-popup-content">
+            <h2>Your Wishlist</h2>
+            {wishlist.length === 0 ? (
+              <p>No items in wishlist.</p>
+            ) : (
+              wishlist.map((item, idx) => (
+                <div className="cart-item" key={idx}>
+                  <img src={item.img} alt={item.title} />
+                  <div className="cart-item-title">{item.title}</div>
+                </div>
+              ))
+            )}
+            <button className="close-cart-btn" onClick={() => setShowWishlistPopup(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Cart Popup */}
       {showCartPopup && (

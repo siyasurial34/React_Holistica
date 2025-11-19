@@ -1,20 +1,40 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { REGISTER_MUTATION } from "../graphql/auth";
 import "./auth.css";
 
 function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-
-  const [register] = useMutation(REGISTER_MUTATION);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSignup = async () => {
-    const res = await register({ variables: form });
-    console.log("REGISTER SUCCESS:", res.data);
+    try {
+      const res = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        alert("Failed to signup!");
+        return;
+      }
+
+      const data = await res.json();
+      console.log("Signup Response:", data);
+
+      alert("Signup Successful!");
+
+      // Save user to local storage
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // Redirect
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
+    }
   };
 
   return (
@@ -25,6 +45,7 @@ function Signup() {
         type="text"
         name="name"
         placeholder="Name"
+        value={form.name}
         onChange={handleChange}
       />
 
@@ -32,6 +53,7 @@ function Signup() {
         type="email"
         name="email"
         placeholder="Email"
+        value={form.email}
         onChange={handleChange}
       />
 
@@ -39,6 +61,7 @@ function Signup() {
         type="password"
         name="password"
         placeholder="Password"
+        value={form.password}
         onChange={handleChange}
       />
 

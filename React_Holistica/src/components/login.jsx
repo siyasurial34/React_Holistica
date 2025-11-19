@@ -1,20 +1,31 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { LOGIN_MUTATION } from "../graphql/auth";
 import "./auth.css";
 
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-
-  const [login] = useMutation(LOGIN_MUTATION);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleLogin = async () => {
-    const res = await login({ variables: form });
-    console.log("LOGIN SUCCESS:", res.data);
+    const res = await fetch(
+      `http://localhost:5000/users?email=${form.email}&password=${form.password}`
+    );
+
+    const data = await res.json();
+
+    if (data.length > 0) {
+      alert("Login Successful!");
+
+      // Save user in Local Storage
+      localStorage.setItem("user", JSON.stringify(data[0]));
+
+      // Redirect to home
+      window.location.href = "/";
+    } else {
+      alert("Invalid email or password");
+    }
   };
 
   return (

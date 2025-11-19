@@ -146,7 +146,7 @@ export default function Skincare() {
             {
               title: "3. Serum",
               desc: "Targets acne, dullness, or fine lines effectively.",
-              img: "https://media.istockphoto.com/id/1522079594/photo/woman-applies-beauty-serum-on-her-skin.jpg",
+              img: "https://media.istockphoto.com/id/1522079594/photo/woman-applies-beauty-serum-on-her-skin.jpg?s=612x612&w=0&k=20&c=TN3xsOxQyds36Ux006DQHcxBxh5hbNxI9ZlFeSHUWZE=",
             },
             {
               title: "4. Moisturizer",
@@ -200,7 +200,7 @@ export default function Skincare() {
             {
               name: "Salicylic Acid",
               desc: "Fights acne & unclogs pores",
-              bg: "https://www.byrdie.com/thmb/MKeUDOf-TwVJPARRRRHANL2luyI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/kojicacidserum-c64cbd1f01294aa3bb9aee26812265c6.png",
+              bg: "https://media.istockphoto.com/id/2152481985/photo/the-texture-of-a-cosmetic-serum-with-a-pipette-closeup-macrophotography.jpg?s=612x612&w=0&k=20&c=mdd6RJ1fBvuvbz5SWOn2zUZ4KoSO3pSwEvXadc2gYr4=",
             },
           ].map((i, index) => (
             <div

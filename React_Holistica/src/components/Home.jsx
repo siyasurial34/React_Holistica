@@ -5,26 +5,35 @@ import "./style.css";
 import heroVideo from "../assets/1.mp4";
 import { Link } from "react-router-dom";
 
-
-
 function Home() {
-  const [isDark, setIsDark] = useState(false);
+  const [user, setUser] = useState(null);
 
+  // Load user on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  // Logout user
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    window.location.reload();
+  };
+
+  // Slider logic + AOS
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
 
-    // Testimonial slider logic
     const slides = document.querySelectorAll(".testimonial-slide");
     const dots = document.querySelectorAll(".dot");
     let currentSlide = 0;
 
     function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
       currentSlide = index;
     }
 
@@ -38,10 +47,6 @@ function Home() {
     return () => clearInterval(slideTimer);
   }, []);
 
-  useEffect(() => {
-    document.body.classList.toggle("dark", isDark);
-  }, [isDark]);
-
   return (
     <>
       {/* Navbar */}
@@ -51,21 +56,28 @@ function Home() {
           <a href="#">About</a>
           <a href="#">Wellness</a>
           <a href="#">Contact</a>
-          <Link to="/login">Login</Link>
         </nav>
-
-       
 
         <div className="logo">Holistica</div>
 
-        <label className="theme-switch">
-          <input
-            type="checkbox"
-            checked={isDark}
-            onChange={() => setIsDark(!isDark)}
-          />
-          <span className="slider"></span>
-        </label>
+        {/* RIGHT SECTION */}
+        <div className="nav-right">
+          {user ? (
+            <div className="profile-area">
+              <span className="profile-icon">👤</span>
+              <span className="profile-name">{user.name}</span>
+
+              {/* Clean logout button */}
+              <button className="logout-btn" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="login-btn">
+              Login
+            </Link>
+          )}
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -74,7 +86,9 @@ function Home() {
           <source src={heroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
         <div className="overlay"></div>
+
         <div className="hero-text">
           <h1>Experts in</h1>
           <h1>wellness</h1>
@@ -92,15 +106,15 @@ function Home() {
         <p>Find wellness solutions tailored to your specific needs.</p>
 
         <div className="concern-cards-scroll">
-           <div className="concern-card">
-    <Link to="/sleep_relax">
-      <img
-        src="https://plus.unsplash.com/premium_photo-1677849533990-ad83e1d7024e?w=600&auto=format&fit=crop&q=60"
-        alt="Sleep"
-      />
-      <div className="card-text">Sleep And Relaxation</div>
-    </Link>
-  </div>
+          <div className="concern-card">
+            <Link to="/sleep_relax">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1677849533990-ad83e1d7024e?w=600&auto=format&fit=crop&q=60"
+                alt="Sleep"
+              />
+              <div className="card-text">Sleep And Relaxation</div>
+            </Link>
+          </div>
 
           <div className="concern-card">
             <Link to="/skincare">
@@ -136,13 +150,7 @@ function Home() {
             <div className="card-text">Immunity</div>
           </div>
 
-          <div className="concern-card">
-            <img
-              src="https://images.unsplash.com/photo-1607006555489-eb09c4c195d5?w=600&auto=format&fit=crop"
-              alt="Gut Health"
-            />
-            <div className="card-text">Gut Health</div>
-          </div>
+          
         </div>
       </section>
 
@@ -154,8 +162,7 @@ function Home() {
           </h2>
           <p>
             Holistica is a holistic lifestyle platform dedicated to promoting
-            health, mindfulness, and sustainable living through thoughtful
-            guidance and resources.
+            health, mindfulness, and sustainable living.
           </p>
           <a href="#" className="btn">
             About Us →
@@ -181,10 +188,7 @@ function Home() {
               alt="Ingredients"
             />
             <h3>Ingredients</h3>
-            <p>
-              We handpick natural, transparent products. No fillers, no
-              chemicals — just wellness you can trust.
-            </p>
+            <p>We handpick natural, transparent products.</p>
           </div>
 
           <div className="method-card">
@@ -194,8 +198,7 @@ function Home() {
             />
             <h3>Lifestyle</h3>
             <p>
-              Holistic living is about balance — nourishing the mind, body, and
-              spirit in harmony.
+              Holistic living is about balance — nourishing mind, body & spirit.
             </p>
           </div>
         </div>
@@ -205,9 +208,8 @@ function Home() {
       <section className="banner">
         <div className="banner-overlay">
           <h1>
-            Holistica is where wellness meets simplicity — a space to discover
-            healthy products that care{" "}
-            <em>for you, inside and out.</em>
+            Holistica is where wellness meets simplicity — healthy products that
+            care <em>for you, inside and out.</em>
           </h1>
           <a href="#about" className="banner-btn">
             About Us →
@@ -221,8 +223,7 @@ function Home() {
           <div className="about-text" data-aos="fade-up">
             <h2>About Us</h2>
             <p>
-              At <strong>Holistica</strong>, we believe wellness is more than a
-              routine — it’s a lifestyle.
+              At <strong>Holistica</strong>, we believe wellness is a lifestyle.
             </p>
             <a href="#shop" className="about-btn">
               Explore Our Products →
@@ -238,14 +239,13 @@ function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* Testimonial Slider */}
       <section className="testimonial-slider">
         <div className="testimonial-slide active">
           <div className="stars">★★★★★</div>
           <p className="quote">
             “I love these vitamins as{" "}
-            <span className="highlight">they actually work</span>…I feel
-            great.”
+            <span className="highlight">they actually work</span>…I feel great.”
           </p>
           <p className="author">Elizabeth S.</p>
           <p className="product">Women’s Multivitamin 18+</p>
